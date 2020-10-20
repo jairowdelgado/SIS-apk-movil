@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "335172487761",
+    "firebase_url": "https://sis-apk-movil.firebaseio.com",
+    "project_id": "sis-apk-movil",
+    "storage_bucket": "sis-apk-movil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335172487761:android:02e689999a5950b7540670",
+        "android_client_info": {
+          "package_name": "unicauca.sis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "335172487761-lksqeme9gq542ipa2rkv4lsc479tnlhs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "unicauca.sis",
+            "certificate_hash": "9ef53232262e74b3218437d5870630a3f6ef22af"
+          }
+        },
+        {
+          "client_id": "335172487761-qbjavgnt8ucrli0os4o7ao3rh8rqin0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsB5X_LcUOByGzuPyBnq_DahpS1ZzL8BI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "335172487761-qbjavgnt8ucrli0os4o7ao3rh8rqin0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
