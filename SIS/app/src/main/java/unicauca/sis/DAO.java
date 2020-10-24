@@ -2,6 +2,7 @@ package unicauca.sis;
 
 import androidx.annotation.NonNull;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +25,13 @@ public class DAO {
         miReferencia.child("Producto").child(producto.getId()).setValue(producto);
     }
 
+    public void producto(String id){
+        //System.out.println("\nLO QUE TRAIGO" + miReferencia.child("Producto").child(id));
+    }
+
+
     public void listarDatos(){
+
         miReferencia.child("Producto").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -41,8 +48,13 @@ public class DAO {
         });
     }
 
-    public ArrayList<Producto> lista(){
-        System.out.println("EL RETORNO DE LISTAR ES : " + productos.size());
-        return productos;
+    public Producto getProducto(String id){
+        for(Producto producto: productos){
+            if(producto.getId().equals(id)){
+                return producto;
+            }
+        }
+        return null;
     }
+
 }

@@ -32,10 +32,9 @@ public class verProducto  extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         Producto producto = (Producto) extras.getSerializable("producto");
         verNombreProducto.setText(producto.getNombre());
-        //verMarcaProducto.setText(producto.getMarca());
-        //verPrecioProducto.setText("$" + producto.getPrecio());
-        //verCantidadProducto.setText(producto.getCantidad() + producto.getMedida());
-
+        verMarcaProducto.setText(producto.getMarca());
+        verPrecioProducto.setText("$" + producto.getPrecio());
+        verCantidadProducto.setText(producto.getCantidad() + producto.getMedida());
     }
 
     public void ingresar(View view){

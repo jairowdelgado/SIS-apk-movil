@@ -26,6 +26,7 @@ public class EscaneoProducto extends AppCompatActivity {
 
     private ImageButton btnScanner;
     private String codigo;
+    private DAO dao = new DAO();
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -33,8 +34,8 @@ public class EscaneoProducto extends AppCompatActivity {
          super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_escaner);
 
+        dao.listarDatos();
         btnScanner = findViewById(R.id.botonEscaner);
-
         btnScanner.setOnClickListener(mOnClickListener);
 
     }
@@ -55,27 +56,10 @@ public class EscaneoProducto extends AppCompatActivity {
             }
         }*/
 
-        Producto producto = new Producto();
-        producto.setId("3030");
-        producto.setNombre("juan");
-        producto.setCodigo(30303);
-        producto.setCantidad(3030);
-        producto.setMarca("30303");
-        producto.setPrecio(30000);
-        producto.setMedida("g");
-        DAO dao = new DAO();
-        //dao.crearProducto(producto);
-        dao.listarDatos();
-        List<Producto> pr = dao.lista();
-        System.out.println("*********TAMAÑO**********: "+pr.size());
+        Producto producto = dao.getProducto("123");
 
-/*
-        ArrayList<Producto> productos = producto.listarDatos();
+        System.out.println("\nNombre: " + producto);
 
-        for(int i = 0; i < productos.size(); i++){
-            System.out.println(" NOMBRE :::: " + productos.get(i).getNombre());
-        }
-*/
         Intent i= new Intent(this,verProducto.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("producto", producto);
