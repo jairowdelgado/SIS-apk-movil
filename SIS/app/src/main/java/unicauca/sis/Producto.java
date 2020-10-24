@@ -16,16 +16,17 @@ import java.util.ArrayList;
 public class Producto implements Serializable {
 
     private String id;
-    private int codigo;
+    private String codigo;
     private String nombre;
     private double precio;
     private String marca;
     private String medida;
     private double cantidad;
+    private boolean estado;
 
     public Producto() {}
 
-    public Producto(String id, int codigo, String nombre, double precio, String marca, String medida, double cantidad) {
+    public Producto(String id, String codigo, String nombre, double precio, String marca, String medida, double cantidad, boolean estado) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -33,6 +34,7 @@ public class Producto implements Serializable {
         this.marca = marca;
         this.medida = medida;
         this.cantidad = cantidad;
+        this.estado = estado;
     }
 
     public String getId() {
@@ -43,11 +45,11 @@ public class Producto implements Serializable {
         this.id = id;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -91,4 +93,7 @@ public class Producto implements Serializable {
         this.cantidad = cantidad;
     }
 
+    public boolean isEstado() { return estado; }
+
+    public void setEstado(boolean estado) { this.estado = estado; }
 }

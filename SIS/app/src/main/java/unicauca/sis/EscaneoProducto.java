@@ -26,7 +26,7 @@ public class EscaneoProducto extends AppCompatActivity {
 
     private ImageButton btnScanner;
     private String codigo;
-    private DAO dao = new DAO();
+    private AccesoDatos AD = new AccesoDatos();
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -34,7 +34,7 @@ public class EscaneoProducto extends AppCompatActivity {
          super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_escaner);
 
-        dao.listarDatos();
+        AD.listarProducto();
         btnScanner = findViewById(R.id.botonEscaner);
         btnScanner.setOnClickListener(mOnClickListener);
 
@@ -56,9 +56,7 @@ public class EscaneoProducto extends AppCompatActivity {
             }
         }*/
 
-        Producto producto = dao.getProducto("123");
-
-        System.out.println("\nNombre: " + producto);
+        Producto producto = AD.getProducto("20");
 
         Intent i= new Intent(this,verProducto.class);
         Bundle bundle = new Bundle();
