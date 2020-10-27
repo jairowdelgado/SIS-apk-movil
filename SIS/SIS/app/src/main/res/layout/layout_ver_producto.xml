@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/verNombreProducto"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="56dp"
+            android:text="Nombre"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_blue_dark"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/verMarcaProducto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.94" />
+
+        <TextView
+            android:id="@+id/verMarcaProducto"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="72dp"
+            android:text="Marca"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_blue_dark"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/verPrecioProducto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/verPrecioProducto"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="76dp"
+            android:text="Precio"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_blue_dark"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/verCantidadProducto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/verCantidadProducto"
+            android:layout_width="344dp"
+            android:layout_height="50dp"
+            android:text="Cantidad"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_blue_dark"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.447"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.706" />
+
+        <ImageButton
+            android:id="@+id/verBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.022"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.008"
+            app:srcCompat="@drawable/abc_vector_test" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
