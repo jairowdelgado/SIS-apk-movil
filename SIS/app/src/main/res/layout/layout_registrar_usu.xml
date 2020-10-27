@@ -10,86 +10,102 @@
     android:paddingTop="?attr/actionBarSize">
 
 
+    <EditText
+        android:id="@+id/txtApellidoRegistro"
+        android:layout_width="333dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:hint="Ingrese su Apellido"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreRegistro" />
+
+    <EditText
+        android:id="@+id/txtNombreRegistro"
+        android:layout_width="333dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="48dp"
+        android:hint="Ingrese su Nombre"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtContraseniaRegConf" />
+
     <TextView
-        android:id="@+id/txtRegistrar"
+        android:id="@+id/txtRegistrarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
         android:text="Registrar"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtEmail"
+        android:id="@+id/txtUsuario"
         android:layout_width="333dp"
         android:layout_height="49dp"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
-        android:hint="Ingrese su Correo"
+        android:layout_marginTop="32dp"
+        android:hint="Ingrese su Usuario"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRegistrarse" />
+
+    <EditText
+        android:id="@+id/txtContraseniaReg"
+        android:layout_width="333dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:hint="Ingrese la contraseña"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.653"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegistrar" />
+        app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
 
     <EditText
-        android:id="@+id/txtConfEmail"
+        android:id="@+id/txtContraseniaRegConf"
         android:layout_width="333dp"
         android:layout_height="49dp"
         android:layout_gravity="center"
-        android:layout_marginTop="52dp"
-        android:hint="Confirme su correo"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.653"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
-
-    <EditText
-        android:id="@+id/txtPassword"
-        android:layout_width="333dp"
-        android:layout_height="49dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="56dp"
-        android:hint="Ingrese su contraseña"
+        android:layout_marginTop="16dp"
+        android:hint="Confirme la contraseña"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.653"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtConfEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/txtContraseniaReg" />
 
     <Button
-        android:id="@+id/btnRegistrars"
+        android:id="@+id/btnRegistrarUsu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="44dp"
         android:text="Registrarse"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
-
-    <TextView
-        android:id="@+id/txtValidate"
-        android:layout_width="52dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="8dp"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/txtApellidoRegistro" />
 
     <TextView
         android:id="@+id/txtValidate2"
         android:layout_width="52dp"
         android:layout_height="15dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtConfEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/txtContraseniaRegConf" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

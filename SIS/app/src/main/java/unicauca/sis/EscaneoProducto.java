@@ -9,8 +9,16 @@ import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import java.io.Console;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EscaneoProducto extends AppCompatActivity {
 
@@ -18,6 +26,7 @@ public class EscaneoProducto extends AppCompatActivity {
 
     private ImageButton btnScanner;
     private String codigo;
+    private AccesoDatos AD = new AccesoDatos();
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -25,8 +34,8 @@ public class EscaneoProducto extends AppCompatActivity {
          super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_escaner);
 
+        AD.listarProducto();
         btnScanner = findViewById(R.id.botonEscaner);
-
         btnScanner.setOnClickListener(mOnClickListener);
 
     }
@@ -35,15 +44,25 @@ public class EscaneoProducto extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        /*
         if(result != null){
             if(result.getContents() != null){
                 codigo = result.getContents();
-                System.out.println(" *************************** El resultado del escaner es: " + codigo);
+                Intent menuIn= new Intent(this,EscaneoProducto.class);
+                startActivity(menuIn);
             }else{
                 codigo = "error";
                 System.out.println(" *************************** El resultado del escaner es: " + codigo);
             }
-        }
+        }*/
+
+        Producto producto = AD.getProducto("20");
+
+        Intent i= new Intent(this,verProducto.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("producto", producto);
+        i.putExtras(bundle);
+        startActivity(i);
     }
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {

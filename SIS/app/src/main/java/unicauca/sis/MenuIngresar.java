@@ -32,9 +32,8 @@ public class MenuIngresar extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_ingresar);
-        txtEmail = findViewById(R.id.txtEmail);
+        txtEmail = findViewById(R.id.txtUsuario);
         txtPassword  = findViewById(R.id.txtPassword);
-        txtValidate = findViewById(R.id.txtValidate);
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
 

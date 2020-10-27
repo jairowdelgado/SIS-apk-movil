@@ -11,7 +11,7 @@
 
 
     <TextView
-        android:id="@+id/txtRegistrar"
+        android:id="@+id/txtInicioSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtEmail"
+        android:id="@+id/txtUsuario"
         android:layout_width="333dp"
         android:layout_height="49dp"
         android:layout_gravity="center"
@@ -31,7 +31,7 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegistrar"/>
+        app:layout_constraintTop_toBottomOf="@+id/txtInicioSesion"/>
 
     <EditText
         android:id="@+id/txtPassword"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
 
     <Button
         android:id="@+id/btnLogin"
@@ -57,15 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
-    <TextView
-        android:id="@+id/txtValidate"
-        android:layout_width="52dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="8dp"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

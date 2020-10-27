@@ -6,4 +6,10 @@
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="txtNombreUsuario"></string>
+    <string name="txtContraseniaRegistro"></string>
+    <string name="txtContraseniaConfirma"></string>
+    <string name="btnRegistrarse">Registrarse</string>
+    <string name="txtNombreRegistro"></string>
+    <string name="txtApellidoRegsitro"></string>
 </resources>

@@ -10,15 +10,16 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnCrearProducto"
             android:layout_width="413dp"
             android:layout_height="93dp"
             android:background="@android:color/holo_blue_dark"
-            android:text="Registrar producto"
+            android:text="Crear Producto"
             android:textColor="@android:color/background_light"
             android:textSize="24sp"
             tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="647dp" />
+            tools:layout_editor_absoluteY="647dp"
+            tools:ignore="MissingConstraints" />
 
         <ImageButton
             android:id="@+id/imageButton3"
@@ -47,7 +48,7 @@
             android:id="@+id/spinner1"
             android:layout_width="352dp"
             android:layout_height="34dp"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintBottom_toTopOf="@+id/btnCrearProducto"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/InputCantidadProducto"
