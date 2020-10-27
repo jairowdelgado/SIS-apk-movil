@@ -20,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void ingresar(View view){
 
-        //Intent menuIn= new Intent(this,MenuInicioAdmin.class);
-        Intent menuIn= new Intent(this,MenuBuscar.class);
+        Intent menuIn= new Intent(this,MenuIngresar.class);
 
         startActivity(menuIn);
     }

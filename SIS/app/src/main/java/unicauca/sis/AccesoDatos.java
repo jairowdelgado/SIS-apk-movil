@@ -16,10 +16,12 @@ public class AccesoDatos {
     private DatabaseReference miReferencia =  bd.getReference();
     private ArrayList<Producto> productos;
     private ArrayList<Usuario> usuarios;
+    private ArrayList<Administrador> administradores;
 
     public AccesoDatos() {
         this.productos = new ArrayList<Producto>();
         this.usuarios = new ArrayList<Usuario>();
+        this.administradores = new ArrayList<Administrador>();
     }
 
     public void insertarProducto(Producto producto){
@@ -60,6 +62,21 @@ public class AccesoDatos {
         });
     }
 
+    public void listarAdministradores(){
+        miReferencia.child("Administrador").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    Administrador administrador = dataSnapshot.getValue(Administrador.class);
+                    administradores.add(administrador);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
     public void actualizar(Producto producto){
         miReferencia.child("Producto").child(producto.getId()).setValue(producto);
     }
@@ -85,6 +102,15 @@ public class AccesoDatos {
         for(Usuario usuario: usuarios){
             if(usuario.getUsuario().equals(nombreUsuario)){
                 return usuario;
+            }
+        }
+        return null;
+    }
+
+    public Administrador getAdministrador(String nombreUsuario){
+        for(Administrador administrador: administradores){
+            if(administrador.getUsuario().equals(nombreUsuario)){
+                return administrador;
             }
         }
         return null;
