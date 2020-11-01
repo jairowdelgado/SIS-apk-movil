@@ -7,19 +7,15 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="unicauca.sis.ui.home.HomeFragment"
+        android:name="unicauca.sis.EscaneoProducto"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/layout_escaner" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="unicauca.sis.ui.dashboard.DashboardFragment"
+        android:name="unicauca.sis.MenuRecientes"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_recientes" />
 
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="unicauca.sis.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+
 </navigation>
