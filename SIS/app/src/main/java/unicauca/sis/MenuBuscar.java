@@ -54,6 +54,12 @@ public class MenuBuscar extends AppCompatActivity {
                 String busqueda=etBuscarPro.getText().toString().trim();
                 boolean ban=false;
                 if(!busqueda.equals("")){
+                    int count = tablaLayout.getChildCount();
+                    for (int i = 0; i < count; i++) {
+                        View child = tablaLayout.getChildAt(i);
+                        if (child instanceof TableRow)
+                            ((TableRow)child).removeAllViews();
+                    }
 
                     Producto pr=new Producto();
                     listaP= new ArrayList<>();
@@ -186,7 +192,7 @@ public class MenuBuscar extends AppCompatActivity {
             public void onClick(View v) {
             Producto aux = pro;
             boolean bandera = true;
-            
+
             if(aux.isEstado())
                 bandera=false;
             aux.setEstado(bandera);
