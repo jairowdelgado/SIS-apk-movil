@@ -21,10 +21,11 @@ public class EditarProducto extends AppCompatActivity {
         ad.listarProducto();
 
         Bundle extras = getIntent().getExtras();
-        String id = extras.getString("productoId");
+        Producto producto = (Producto) extras.getSerializable("producto");
+        System.out.println(producto.getNombre());
 
-        Producto pr = ad.getProducto(id);
-        System.out.println("EL producto es " + pr);
+        //Producto pr = ad.getProducto(id);
+        //System.out.println("EL producto es " + pr);
 
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override

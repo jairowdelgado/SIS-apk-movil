@@ -180,7 +180,9 @@ public class MenuBuscar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuBuscar.this,EditarProducto.class);
-                intent.putExtra("productoId",pro.getId());
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("producto", pro);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
