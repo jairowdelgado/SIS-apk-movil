@@ -38,11 +38,10 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvResulBusqueda"
+    <TableLayout
+        android:id="@+id/tlResulBusqueda"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible" />
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

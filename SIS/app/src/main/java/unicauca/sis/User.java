@@ -1,16 +1,18 @@
 package unicauca.sis;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private String usuario;
-    private String contrasena;
+    private String contrasenia;
     private String nombreCompleto;
 
-    public Usuario() { }
+    public User() { }
 
-    public Usuario(String usuario, String contrasena, String nombreCompleto) {
+    public User(String usuario, String contrasenia, String nombreCompleto) {
         this.usuario = usuario;
-        this.contrasena = contrasena;
+        this.contrasenia = contrasenia;
         this.nombreCompleto = nombreCompleto;
     }
 
@@ -22,12 +24,12 @@ public class Usuario {
         this.usuario = usuario;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     public String getNombreCompleto() {

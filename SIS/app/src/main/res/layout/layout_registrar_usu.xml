@@ -98,8 +98,8 @@
         app:layout_constraintTop_toBottomOf="@+id/txtApellidoRegistro" />
 
     <TextView
-        android:id="@+id/txtValidate2"
-        android:layout_width="52dp"
+        android:id="@+id/txtValidatePass"
+        android:layout_width="300dp"
         android:layout_height="15dp"
         android:layout_marginStart="48dp"
         android:layout_marginTop="12dp"

@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.FirebaseApp;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
     }
 
@@ -26,4 +29,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(menuIn);
     }
 
+    public void registrarse(View view){
+
+        Intent menuIn= new Intent(this,MenuRegistrarse.class);
+
+        startActivity(menuIn);
+    }
 }

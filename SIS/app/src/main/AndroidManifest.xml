@@ -15,6 +15,7 @@
         <activity android:name=".MenuRegistrarse" />
         <activity android:name=".MenuIngresar"/>
         <activity android:name=".MenuBuscar"/>
+        <activity android:name=".EditarProducto"/>
 
         <activity
             android:name=".MainActivity"

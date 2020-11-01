@@ -96,4 +96,5 @@ public class Producto implements Serializable {
     public boolean isEstado() { return estado; }
 
     public void setEstado(boolean estado) { this.estado = estado; }
+
 }

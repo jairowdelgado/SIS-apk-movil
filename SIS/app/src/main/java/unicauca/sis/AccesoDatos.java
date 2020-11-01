@@ -1,7 +1,10 @@
 package unicauca.sis;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -15,18 +18,24 @@ public class AccesoDatos {
     private FirebaseDatabase bd = FirebaseDatabase.getInstance();
     private DatabaseReference miReferencia =  bd.getReference();
     private ArrayList<Producto> productos;
-    private ArrayList<Usuario> usuarios;
+    private ArrayList<User> users;
+    private ArrayList<User> admins;
 
     public AccesoDatos() {
         this.productos = new ArrayList<Producto>();
-        this.usuarios = new ArrayList<Usuario>();
+        this.users = new ArrayList<User>();
+        this.admins = new ArrayList<User>();
+
+
     }
+
 
     public void insertarProducto(Producto producto){
         miReferencia.child("Producto").child(producto.getId()).setValue(producto);
     }
 
-    public void insertarUsuario(Usuario usuario){
+    public void insertarUsuario(User usuario){
+        System.out.println(usuario.getUsuario());
         miReferencia.child("Usuario").child(usuario.getUsuario()).setValue(usuario);
     }
 
@@ -44,15 +53,31 @@ public class AccesoDatos {
             }
         });
     }
+    public void listarAdmin(){
+        miReferencia.child("Administrador").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    User admin = dataSnapshot.getValue(User.class);
+                    admins.add(admin);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
 
-    public void listarUsarios(){
+    public void listarUsuarios(){
         miReferencia.child("Usuario").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Usuario usuario = dataSnapshot.getValue(Usuario.class);
-                    usuarios.add(usuario);
+                    User user = dataSnapshot.getValue(User.class);
+
+                    users.add(user);
                 }
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -68,8 +93,12 @@ public class AccesoDatos {
         return productos;
     }
 
-    public ArrayList<Usuario> getUsuarios() {
-        return usuarios;
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+    public ArrayList<User> getAdmins() {
+
+        return admins;
     }
 
     public Producto getProducto(String codigo){
@@ -81,10 +110,10 @@ public class AccesoDatos {
         return null;
     }
 
-    public Usuario getUsuario(String nombreUsuario){
-        for(Usuario usuario: usuarios){
-            if(usuario.getUsuario().equals(nombreUsuario)){
-                return usuario;
+    public User getUsuario(String nombreUsuario){
+        for(User user : users){
+            if(user.getUsuario().equals(nombreUsuario)){
+                return user;
             }
         }
         return null;
