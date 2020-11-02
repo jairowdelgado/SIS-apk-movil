@@ -60,7 +60,7 @@ public class MenuIngresar extends AppCompatActivity {
                             }
                         }
                         if (bandera) {
-                            Intent intentIngre = new Intent(MenuIngresar.this, MenuInicioAdmin.class);
+                            Intent intentIngre = new Intent(MenuIngresar.this, ScaneoUsuario.class);
                             intentIngre.putExtra("Login", usuario);
                             intentIngre.putExtra("password", password);
                             startActivity(intentIngre);
