@@ -1,5 +1,6 @@
 package unicauca.sis;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
@@ -36,7 +37,7 @@ public class crearProducto extends AppCompatActivity {
         crear = findViewById(R.id.btnCrearProducto);
 
         nombre = findViewById(R.id.inputNombreProducto);
-        marca = findViewById(R.id.inputNombreProducto);
+        marca = findViewById(R.id.inputMarcaProdcto);
         precio = findViewById(R.id.inputPrecioProducto);
         cantidad = findViewById(R.id.inputCantidadProducto);
         medidas = (Spinner) findViewById(R.id.spinnerMedida);
@@ -77,6 +78,10 @@ public class crearProducto extends AppCompatActivity {
                     producto.setMedida(medidaTomada);
                     producto.setEstado(true);
                     datos.insertarProducto(producto);
+                    Toast toast = Toast.makeText(getApplicationContext(),"Producto agredado con exito",Toast.LENGTH_LONG);
+                    toast.show();
+                    Intent intent = new Intent(crearProducto.this,EscaneoProducto.class);
+                    startActivity(intent);
                 }
             }
         });

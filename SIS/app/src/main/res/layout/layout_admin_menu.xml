@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
@@ -10,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-        android:background="#2196F3">
+    android:background="#2196F3">
 
     <ImageButton
         android:id="@+id/botonEscaner"
@@ -29,7 +28,7 @@
         android:id="@+id/textView"
         android:layout_width="302dp"
         android:layout_height="66dp"
-        android:text="Toca el logo para escanear el producto"
+        android:text="Toca el logo para escanear "
         android:textAlignment="center"
         android:textColor="@android:color/white"
         app:autoSizeTextType="uniform"
@@ -42,12 +41,12 @@
 
 
     <Button
-        android:id="@+id/btnRecientes"
+        android:id="@+id/btnBuscarProducto"
         android:layout_width="410dp"
         android:layout_height="66dp"
         android:background="#3F51B5"
         android:gravity="bottom|end"
-        android:text="Recientes"
+        android:text="Buscar Producto"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
@@ -56,6 +55,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botonEscaner"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txtMensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Para agregar un producto"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

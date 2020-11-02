@@ -6,25 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
-import java.io.Console;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class EscaneoProducto extends AppCompatActivity {
 
     //VARIABLE CON EL ROL
-
+    private Button btnBuscarAdmin;
     private ImageButton btnScanner;
     private String codigo;
     private AccesoDatos AD = new AccesoDatos();
@@ -33,12 +25,19 @@ public class EscaneoProducto extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_escaner);
+        setContentView(R.layout.layout_admin_menu);
 
         AD.listarProducto();
         btnScanner = findViewById(R.id.botonEscaner);
         btnScanner.setOnClickListener(mOnClickListener);
-
+        btnBuscarAdmin = findViewById(R.id.btnBuscarProducto);
+        btnBuscarAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EscaneoProducto.this, MenuBuscar.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -57,16 +56,6 @@ public class EscaneoProducto extends AppCompatActivity {
             }
         }
 
-        /*
-        ESTE SIRVE PARA VER UN PRODUCTO ATRAVÉS DE UN CODIGO
-        Producto producto = AD.getProducto("20");
-
-        Intent i= new Intent(this,verProducto.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("producto", producto);
-        i.putExtras(bundle);
-        startActivity(i);
-        */
 
     }
 
