@@ -22,6 +22,7 @@ public class MenuIngresar extends AppCompatActivity {
     private TextView txtValidate;
     private boolean isValidEmail= false;
     private ArrayList<User> users;
+    private ArrayList<User> admins;
     private  AccesoDatos accesoDatos ;
 
     @Override
@@ -46,24 +47,45 @@ public class MenuIngresar extends AppCompatActivity {
                     String usuario = txtLogin.getText().toString().trim();
                     String password = txtPassword.getText().toString().trim();
                     boolean bandera=false;
+                    boolean adminIs=true;
                     if(!usuario.equals("") && !password.equals("")) {
 
                         users = new ArrayList<>();
+                        admins = new ArrayList<>();
                         users = accesoDatos.getUsers();
-                        users.addAll(accesoDatos.getAdmins());
+                        admins = accesoDatos.getAdmins();
                         for (int i = 0; i < users.size(); i++) {
                             if (!users.get(i).equals(null) && users.get(i).getUsuario().equals(usuario)) {
                                 if (users.get(i).getContrasenia().equals(password)) {
                                     bandera = true;
+                                    adminIs = false;
+                                }
+                                i = users.size();
+                            }
+                        }
+                        for (int i = 0; i < admins.size(); i++) {
+                            if (!admins.get(i).equals(null) && admins.get(i).getUsuario().equals(usuario)) {
+                                if (admins.get(i).getContrasenia().equals(password)) {
+                                    bandera = true;
+                                    adminIs = true;
                                 }
                                 i = users.size();
                             }
                         }
                         if (bandera) {
-                            Intent intentIngre = new Intent(MenuIngresar.this, ScaneoUsuario.class);
-                            intentIngre.putExtra("Login", usuario);
-                            intentIngre.putExtra("password", password);
-                            startActivity(intentIngre);
+                            if(adminIs){
+                                //ESte es un administrador
+                                Intent intentAdmi = new Intent(MenuIngresar.this, MenuInicioAdmin.class);
+                                intentAdmi.putExtra("Login", usuario);
+                                intentAdmi.putExtra("password", password);
+                                startActivity(intentAdmi);
+                            }else {
+                                //Este es un Usuario normi
+                                Intent intentIngre = new Intent(MenuIngresar.this, ScaneoUsuario.class);
+                                intentIngre.putExtra("Login", usuario);
+                                intentIngre.putExtra("password", password);
+                                startActivity(intentIngre);
+                            }
                         } else {
                             Toast t= Toast.makeText(getApplicationContext(), "El usuario o contraseña son incorrectos", Toast.LENGTH_LONG);
                             t.show();
