@@ -49,9 +49,8 @@ public class EscaneoProducto extends AppCompatActivity {
         if(result != null){
             if(result.getContents() != null){
                 //codigo = result.getContents();
-                //codigo = "111111";
                 Intent menuIn= new Intent(this, crearProducto.class);
-                menuIn.putExtra("codigo", String.valueOf(result));
+                menuIn.putExtra("codigo", String.valueOf(result.getContents()));
                 startActivity(menuIn);
             }else{
 

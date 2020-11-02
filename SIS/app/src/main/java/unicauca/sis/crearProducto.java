@@ -34,7 +34,9 @@ public class crearProducto extends AppCompatActivity {
         datos.listarProducto();
 
         crear = findViewById(R.id.btnCrearProducto);
+
         nombre = findViewById(R.id.inputNombreProducto);
+        marca = findViewById(R.id.inputNombreProducto);
         precio = findViewById(R.id.inputPrecioProducto);
         cantidad = findViewById(R.id.inputCantidadProducto);
         medidas = (Spinner) findViewById(R.id.spinnerMedida);
@@ -62,16 +64,48 @@ public class crearProducto extends AppCompatActivity {
         crear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Producto producto = new Producto();
-                int id = (datos.getProductos()).size() + 1;
-                producto.setId(String.valueOf(id));
-                producto.setCodigo(codigo);
-                producto.setNombre(nombre.getEditText().getText().toString().trim());
-                producto.setPrecio(Double.parseDouble(precio.getEditText().getText().toString().trim()));
-                producto.setCantidad(Double.parseDouble(cantidad.getEditText().getText().toString().trim()));
-                producto.setMedida(medidaTomada);
-                producto.setEstado(true);
+                System.out.println("Codigo : " + codigo.toString());
+                if(valicacion()){
+                    Producto producto = new Producto();
+                    int id = (datos.getProductos()).size() + 1;
+                    producto.setId(String.valueOf(id));
+                    producto.setCodigo(codigo);
+                    producto.setNombre(nombre.getEditText().getText().toString().trim());
+                    producto.setMarca(marca.getEditText().getText().toString().trim());
+                    producto.setPrecio(Double.parseDouble(precio.getEditText().getText().toString().trim()));
+                    producto.setCantidad(Double.parseDouble(cantidad.getEditText().getText().toString().trim()));
+                    producto.setMedida(medidaTomada);
+                    producto.setEstado(true);
+                    datos.insertarProducto(producto);
+                }
             }
         });
+    }
+
+    private boolean valicacion(){
+
+        String nombre = this.nombre.getEditText().getText().toString().trim();
+        String precio = this.precio.getEditText().getText().toString().trim();
+        String cantidad = this.cantidad.getEditText().getText().toString().trim();
+        String marca = this.marca.getEditText().getText().toString().trim();
+
+        if(nombre.isEmpty()){
+            this.nombre.setError("Este campo no puede quedar vacio");
+            return false;
+        }
+        if(precio.isEmpty()){
+            this.precio.setError("Este campo no puede quedar vacio");
+            return false;
+        }
+        if(cantidad.isEmpty()){
+            this.cantidad.setError("Este campo no puede quedar vacio");
+            return false;
+        }
+        if(marca.isEmpty()){
+            this.marca.setError("Este campo no puede quedar vacio");
+            return false;
+        }
+
+        return true;
     }
 }
