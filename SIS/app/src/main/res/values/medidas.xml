@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="combo_medidas">
+        <item>KG</item>
+        <item>G</item>
+        <item>TN</item>
+    </string-array>
+</resources>

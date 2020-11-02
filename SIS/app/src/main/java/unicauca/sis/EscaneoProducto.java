@@ -44,18 +44,22 @@ public class EscaneoProducto extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        /*
+
         if(result != null){
-            if(result.getContents() != null){
-                codigo = result.getContents();
-                Intent menuIn= new Intent(this,EscaneoProducto.class);
+            if(result.getContents() == null){
+                //codigo = result.getContents();
+                codigo = "111111";
+                Intent menuIn= new Intent(this, crearProducto.class);
+                menuIn.putExtra("codigo",codigo);
                 startActivity(menuIn);
             }else{
                 codigo = "error";
                 System.out.println(" *************************** El resultado del escaner es: " + codigo);
             }
-        }*/
+        }
 
+        /*
+        ESTE SIRVE PARA VER UN PRODUCTO ATRAVÉS DE UN CODIGO
         Producto producto = AD.getProducto("20");
 
         Intent i= new Intent(this,verProducto.class);
@@ -63,6 +67,8 @@ public class EscaneoProducto extends AppCompatActivity {
         bundle.putSerializable("producto", producto);
         i.putExtras(bundle);
         startActivity(i);
+        */
+
     }
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
