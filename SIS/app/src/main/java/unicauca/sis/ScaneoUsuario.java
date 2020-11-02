@@ -64,25 +64,28 @@ public class ScaneoUsuario  extends  AppCompatActivity{
         protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
             IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        /*
+
         if(result != null){
             if(result.getContents() != null){
+
+                Producto producto = AD.getProducto(String.valueOf(result));
+
+                Intent i= new Intent(this,verProducto.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("producto", producto);
+                i.putExtras(bundle);
+                startActivity(i);
+
+                /*
                 codigo = result.getContents();
                 Intent menuIn= new Intent(this,EscaneoProducto.class);
                 startActivity(menuIn);
+                */
             }else{
                 codigo = "error";
                 System.out.println(" *************************** El resultado del escaner es: " + codigo);
             }
-        }*/
-
-            Producto producto = AD.getProducto("20");
-
-            Intent i= new Intent(this,verProducto.class);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("producto", producto);
-            i.putExtras(bundle);
-            startActivity(i);
+        }
         }
 
         private View.OnClickListener mOnClickListener = new View.OnClickListener() {

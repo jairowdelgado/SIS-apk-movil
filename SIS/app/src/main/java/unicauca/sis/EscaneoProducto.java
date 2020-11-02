@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,15 +47,14 @@ public class EscaneoProducto extends AppCompatActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 
         if(result != null){
-            if(result.getContents() == null){
+            if(result.getContents() != null){
                 //codigo = result.getContents();
-                codigo = "111111";
+                //codigo = "111111";
                 Intent menuIn= new Intent(this, crearProducto.class);
-                menuIn.putExtra("codigo",codigo);
+                menuIn.putExtra("codigo", String.valueOf(result));
                 startActivity(menuIn);
             }else{
-                codigo = "error";
-                System.out.println(" *************************** El resultado del escaner es: " + codigo);
+
             }
         }
 
