@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Intent menuIn= new Intent(this,MenuInicioAdmin.class);
         //Intent menuIn= new Intent(this,MenuBuscar.class);
-        Intent menuIn= new Intent(this,EscaneoProducto.class);
+        Intent menuIn= new Intent(this,MenuIngresar.class);
 
         startActivity(menuIn);
     }

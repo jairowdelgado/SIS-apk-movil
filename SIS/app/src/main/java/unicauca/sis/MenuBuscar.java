@@ -32,6 +32,7 @@ public class MenuBuscar extends AppCompatActivity {
     private TableLayout tablaLayout;
     private ArrayList<String> datos;
     private TableRow filaTabla;
+    private ArrayList<Producto> listaProducto;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,21 +61,21 @@ public class MenuBuscar extends AppCompatActivity {
                         if (child instanceof TableRow)
                             ((TableRow)child).removeAllViews();
                     }
-
-                    Producto pr=new Producto();
+                    listaProducto = new ArrayList<>();
                     listaP= new ArrayList<>();
                     listaP=accesoDatos.getProductos();
 
                     for(int i=0; i<listaP.size();i++){
                         System.out.println(" "+listaP.get(i).toString());
                         if(listaP.get(i).getNombre().equals(busqueda)){
-                            pr=listaP.get(i);
-                            i=listaP.size();
+
+
+                            listaProducto.add(listaP.get(i));
                             ban=true;
                         }
                     }
                     if(ban)
-                        crearDatatable(pr);
+                        crearDatatable(listaProducto);
                     else{
                         Toast toast = Toast.makeText(getApplicationContext(),"Producto no encontrado ",Toast.LENGTH_LONG);
                         toast.show();
@@ -112,100 +113,100 @@ public class MenuBuscar extends AppCompatActivity {
 
 
 
-    private void crearDatatable(Producto producto){
-        final Producto pro = producto;
+    private void crearDatatable(ArrayList<Producto> listaProducto){
+       // final Producto pro = producto;
         this.datos = new ArrayList<>();
         this.datos.add("Nombre : ");
         this.datos.add("Marca : ");
         this.datos.add("Medida : ");
         this.datos.add("Precio : ");
         this.datos.add("Estado : ");
+        for (final Producto producto: listaProducto) {
+            nuevaFila();
+            nuevaCelda();
+            txtCelda.setText(datos.get(0));
+            filaTabla.addView(txtCelda, newTableRowParams());
+            nuevaCelda();
+            txtCelda.setText(producto.getNombre());
+            filaTabla.addView(txtCelda, newTableRowParams());
+            tablaLayout.addView(filaTabla);
 
-        nuevaFila();
-        nuevaCelda();
-        txtCelda.setText(datos.get(0));
-        filaTabla.addView(txtCelda, newTableRowParams());
-        nuevaCelda();
-        txtCelda.setText(producto.getNombre());
-        filaTabla.addView(txtCelda, newTableRowParams());
-        tablaLayout.addView(filaTabla);
+            nuevaFila();
+            nuevaCelda();
+            txtCelda.setText(datos.get(1));
+            filaTabla.addView(txtCelda, newTableRowParams());
+            nuevaCelda();
+            txtCelda.setText(producto.getMarca());
+            filaTabla.addView(txtCelda, newTableRowParams());
+            tablaLayout.addView(filaTabla);
 
-        nuevaFila();
-        nuevaCelda();
-        txtCelda.setText(datos.get(1));
-        filaTabla.addView(txtCelda, newTableRowParams());
-        nuevaCelda();
-        txtCelda.setText(producto.getMarca());
-        filaTabla.addView(txtCelda, newTableRowParams());
-        tablaLayout.addView(filaTabla);
+            nuevaFila();
+            nuevaCelda();
+            txtCelda.setText(datos.get(2));
+            filaTabla.addView(txtCelda, newTableRowParams());
+            nuevaCelda();
+            txtCelda.setText(producto.getMedida());
+            filaTabla.addView(txtCelda, newTableRowParams());
+            tablaLayout.addView(filaTabla);
 
-        nuevaFila();
-        nuevaCelda();
-        txtCelda.setText(datos.get(2));
-        filaTabla.addView(txtCelda, newTableRowParams());
-        nuevaCelda();
-        txtCelda.setText(producto.getMedida());
-        filaTabla.addView(txtCelda, newTableRowParams());
-        tablaLayout.addView(filaTabla);
+            nuevaFila();
+            nuevaCelda();
+            txtCelda.setText(datos.get(3));
+            filaTabla.addView(txtCelda, newTableRowParams());
+            nuevaCelda();
+            txtCelda.setText(String.valueOf(producto.getPrecio()));
+            filaTabla.addView(txtCelda, newTableRowParams());
+            tablaLayout.addView(filaTabla);
 
-        nuevaFila();
-        nuevaCelda();
-        txtCelda.setText(datos.get(3));
-        filaTabla.addView(txtCelda, newTableRowParams());
-        nuevaCelda();
-        txtCelda.setText(String.valueOf(producto.getPrecio()));
-        filaTabla.addView(txtCelda, newTableRowParams());
-        tablaLayout.addView(filaTabla);
+            nuevaFila();
+            nuevaCelda();
+            txtCelda.setText(datos.get(4));
+            filaTabla.addView(txtCelda, newTableRowParams());
+            nuevaCelda();
+            boolean estado = producto.isEstado();
+            String estad = "";
+            if (estado) {
+                estad = "En inventario";
+            } else {
+                estad = "Descontinuado";
+            }
+            txtCelda.setText(estad);
+            filaTabla.addView(txtCelda, newTableRowParams());
+            tablaLayout.addView(filaTabla);
 
-        nuevaFila();
-        nuevaCelda();
-        txtCelda.setText(datos.get(4));
-        filaTabla.addView(txtCelda, newTableRowParams());
-        nuevaCelda();
-        boolean estado = producto.isEstado();
-        String estad="";
-        if(estado){
-            estad ="En inventario";
-        }else{
-            estad = "Descontinuado";
+            nuevaFila();
+            nuevoBoton();
+            btnCelda.setText("Editar");
+            btnCelda.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MenuBuscar.this, EditarProducto.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("producto", producto);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            });
+            filaTabla.addView(btnCelda, newTableRowParams());
+            nuevoBoton();
+            btnCelda.setText("Cambiar Estado");
+            btnCelda.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Producto aux = producto;
+                    boolean bandera = true;
+
+                    if (aux.isEstado())
+                        bandera = false;
+                    aux.setEstado(bandera);
+
+                    accesoDatos.actualizar(aux);
+
+                }
+            });
+            filaTabla.addView(btnCelda, newTableRowParams());
+            tablaLayout.addView(filaTabla);
         }
-        txtCelda.setText(estad);
-        filaTabla.addView(txtCelda, newTableRowParams());
-        tablaLayout.addView(filaTabla);
-
-        nuevaFila();
-        nuevoBoton();
-        btnCelda.setText("Editar");
-        btnCelda.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MenuBuscar.this,EditarProducto.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("producto", pro);
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
-        filaTabla.addView(btnCelda, newTableRowParams());
-        nuevoBoton();
-        btnCelda.setText("Cambiar Estado");
-        btnCelda.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            Producto aux = pro;
-            boolean bandera = true;
-
-            if(aux.isEstado())
-                bandera=false;
-            aux.setEstado(bandera);
-
-            accesoDatos.actualizar(aux);
-
-            }
-        });
-        filaTabla.addView(btnCelda, newTableRowParams());
-        tablaLayout.addView(filaTabla);
-
 
     }
     private TableRow.LayoutParams newTableRowParams(){

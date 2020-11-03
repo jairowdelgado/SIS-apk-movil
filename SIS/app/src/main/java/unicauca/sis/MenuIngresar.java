@@ -75,14 +75,14 @@ public class MenuIngresar extends AppCompatActivity {
                         if (bandera) {
                             if(adminIs){
                                 //ESte es un administrador
-                                Intent intentAdmi = new Intent(MenuIngresar.this, MenuInicioAdmin.class);
-                                intentAdmi.putExtra("Login", usuario);
+                                Intent intentAdmi = new Intent(MenuIngresar.this, EscaneoProducto.class);
+                                intentAdmi.putExtra("usuario", usuario);
                                 intentAdmi.putExtra("password", password);
                                 startActivity(intentAdmi);
                             }else {
                                 //Este es un Usuario normi
                                 Intent intentIngre = new Intent(MenuIngresar.this, ScaneoUsuario.class);
-                                intentIngre.putExtra("Login", usuario);
+                                intentIngre.putExtra("usuario", usuario);
                                 intentIngre.putExtra("password", password);
                                 startActivity(intentIngre);
                             }

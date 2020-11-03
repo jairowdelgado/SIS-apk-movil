@@ -18,6 +18,7 @@
         <activity android:name=".MenuBuscar"/>
         <activity android:name=".EditarProducto"/>
         <activity android:name=".ScaneoUsuario"/>
+        <activity android:name=".MenuRecientes"/>
 
         <activity
             android:name=".MainActivity"

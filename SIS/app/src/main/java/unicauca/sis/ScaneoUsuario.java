@@ -1,7 +1,9 @@
 package unicauca.sis;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -32,6 +34,10 @@ import java.io.Console;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import unicauca.sis.utilidades.DAO;
+import unicauca.sis.utilidades.Sqlconexion;
+
 public class ScaneoUsuario  extends  AppCompatActivity{
 
         //VARIABLE CON EL ROL
@@ -54,6 +60,8 @@ public class ScaneoUsuario  extends  AppCompatActivity{
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(ScaneoUsuario.this,MenuRecientes.class);
+                    Bundle  usua=getIntent().getExtras();
+                    intent.putExtra("usuario",usua.getString("usuario"));
                     startActivity(intent);
                 }
             });
@@ -67,14 +75,19 @@ public class ScaneoUsuario  extends  AppCompatActivity{
 
         if(result != null){
             if(result.getContents() != null){
-
-                Producto producto = AD.getProducto(String.valueOf(result));
+                Bundle  usua=getIntent().getExtras();
+                User usuario=new User();
+                usuario.setUsuario(usua.getString("usuario"));
+                Producto producto = new Producto();
+                producto=AD.getProducto(result.getContents());
+                registrarRecientes(producto,usuario);
 
                 Intent i= new Intent(this,verProducto.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("producto", producto);
                 i.putExtras(bundle);
                 startActivity(i);
+
 
                 /*
                 codigo = result.getContents();
@@ -98,7 +111,24 @@ public class ScaneoUsuario  extends  AppCompatActivity{
                 }
             }
         };
+    public void registrarRecientes(Producto producto,User usuario){
+        Sqlconexion sqlconexion= new Sqlconexion(this,"bd_reciente",null,1);
+        SQLiteDatabase db = sqlconexion.getWritableDatabase();
 
 
+        ContentValues values= new ContentValues();
+        values.put(DAO.CAMPO_CODIGO,producto.getCodigo());
+        values.put(DAO.CAMPO_NOMBRE,producto.getNombre());
+        values.put(DAO.CAMPO_MARCA,producto.getMarca());
+        values.put(DAO.CAMPO_CANTIDAD,producto.getCantidad());
+        values.put(DAO.CAMPO_PRECIO,producto.getPrecio());
+        values.put(DAO.CAMPO_MEDIDA,producto.getMedida());
+        values.put(DAO.CAMPO_ESTADO,producto.isEstado());
+
+        values.put(DAO.CAMPO_USUARIO,usuario.getUsuario());
+        System.out.println(DAO.CAMPO_MARCA+" mara  "+producto.getMarca());
+        Long idre =db.insert(DAO.TABLA_PRODUCTO,DAO.CAMPO_CODIGO,values);
+        db.close();
+    }
     }
 
