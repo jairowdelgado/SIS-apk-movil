@@ -1,5 +1,6 @@
 package unicauca.sis;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewDebug;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,26 +27,36 @@ public class MenuRegistrarse extends AppCompatActivity {
     private EditText txtNombre;
     private EditText txtApellido;
     private Button btnRegistro;
+    private ImageButton btnVolver;
     private TextView txtValidarPass;
     private ArrayList<User> users;
     private User usu;
     private AccesoDatos acceso;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_registrar_usu);
+        setContentView(R.layout.layout_registro_aplicacion);
         txtLogin = findViewById(R.id.txtUsuario);
         txtPass = findViewById(R.id.txtContraseniaReg);
         txtConfirPass = findViewById(R.id.txtContraseniaRegConf);
         txtNombre = findViewById(R.id.txtNombreRegistro);
         txtApellido = findViewById(R.id.txtApellidoRegistro);
         btnRegistro = findViewById(R.id.btnRegistrarUsu);
+        btnVolver = findViewById(R.id.btnVolverRegistro);
         txtValidarPass = findViewById(R.id.txtValidatePass);
         acceso = new AccesoDatos();
         acceso.listarUsuarios();
 
 
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MenuRegistrarse.this,MainActivity.class);
+                startActivity(i);
+            }
+        });
 
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override

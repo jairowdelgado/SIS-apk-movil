@@ -1,10 +1,13 @@
 package unicauca.sis;
 
+import android.annotation.SuppressLint;
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,12 +22,14 @@ public class MenuIngresar extends AppCompatActivity {
     private EditText txtLogin;
     private EditText txtPassword;
     private Button btnLogin;
+    private ImageButton btnVolver;
     private TextView txtValidate;
     private boolean isValidEmail= false;
     private ArrayList<User> users;
     private ArrayList<User> admins;
     private  AccesoDatos accesoDatos ;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +37,20 @@ public class MenuIngresar extends AppCompatActivity {
         txtLogin = findViewById(R.id.txtUsuario);
         txtPassword  = findViewById(R.id.txtPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        btnVolver = findViewById(R.id.btnVolverIngresar);
         //FirebaseApp.initializeApp(this);
         accesoDatos = new AccesoDatos();
         accesoDatos.listarAdmin();
         accesoDatos.listarUsuarios();
 
 
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MenuIngresar.this,MainActivity.class);
+                startActivity(i);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
 

@@ -1,5 +1,6 @@
 package unicauca.sis;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -15,9 +17,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import static unicauca.sis.R.id.btnVolverCrear;
+
 public class crearProducto extends AppCompatActivity {
 
     private Button crear;
+    private ImageButton btnVolver;
     private String codigo;
     private TextInputLayout nombre;
     private TextInputLayout precio;
@@ -27,6 +32,7 @@ public class crearProducto extends AppCompatActivity {
     private Spinner medidas;
     private AccesoDatos datos = new AccesoDatos();
 
+    @SuppressLint("WrongViewCast")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +41,7 @@ public class crearProducto extends AppCompatActivity {
         datos.listarProducto();
 
         crear = findViewById(R.id.btnCrearProducto);
+        btnVolver = findViewById(btnVolverCrear);
 
         nombre = findViewById(R.id.inputNombreProducto);
         marca = findViewById(R.id.inputMarcaProdcto);
@@ -85,6 +92,17 @@ public class crearProducto extends AppCompatActivity {
                 }
             }
         });
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentAdmi = new Intent(crearProducto.this, EscaneoProducto.class);
+                intentAdmi.putExtra("usuario", "usuario");
+                intentAdmi.putExtra("password", "password");
+                startActivity(intentAdmi);
+            }
+        });
+
     }
 
     private boolean valicacion(){
