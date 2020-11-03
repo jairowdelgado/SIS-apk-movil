@@ -12,7 +12,6 @@
         <activity android:name=".verProducto" />
         <activity android:name=".crearProducto"/>
         <activity android:name=".EscaneoProducto" />
-        <activity android:name=".MenuInicioAdmin" />
         <activity android:name=".MenuRegistrarse" />
         <activity android:name=".MenuIngresar"/>
         <activity android:name=".MenuBuscar"/>

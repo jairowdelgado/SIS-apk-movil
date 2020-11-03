@@ -206,6 +206,13 @@ public class MenuBuscar extends AppCompatActivity {
             });
             filaTabla.addView(btnCelda, newTableRowParams());
             tablaLayout.addView(filaTabla);
+
+            nuevaFila();
+            nuevaCelda();
+            txtCelda.setText("");
+            txtCelda.setBackgroundColor(Color.rgb(33,150,243));
+            filaTabla.addView(txtCelda);
+            tablaLayout.addView(filaTabla);
         }
 
     }

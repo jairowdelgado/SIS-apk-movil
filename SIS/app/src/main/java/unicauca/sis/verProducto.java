@@ -37,9 +37,6 @@ public class verProducto  extends AppCompatActivity {
         verCantidadProducto.setText(producto.getCantidad() + producto.getMedida());
     }
 
-    public void ingresar(View view){
-        Intent menuIn= new Intent(this,MenuInicioAdmin.class);
-        startActivity(menuIn);
-    }
+
 
 }
