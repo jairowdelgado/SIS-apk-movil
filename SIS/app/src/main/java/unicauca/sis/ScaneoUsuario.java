@@ -43,6 +43,7 @@ public class ScaneoUsuario  extends  AppCompatActivity{
         //VARIABLE CON EL ROL
         private Button btnReciente;
         private ImageButton btnScanner;
+        private ImageButton btnCerrarSesion;
         private String codigo;
         private AccesoDatos AD = new AccesoDatos();
 
@@ -65,7 +66,6 @@ public class ScaneoUsuario  extends  AppCompatActivity{
                     startActivity(intent);
                 }
             });
-
         }
 
         @Override

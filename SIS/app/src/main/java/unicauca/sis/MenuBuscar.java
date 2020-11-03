@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class MenuBuscar extends AppCompatActivity {
     private EditText etBuscarPro;
     private ImageButton btnBuscar;
-    private Button btnAtras;
+    private ImageButton btnAtras;
     private TextView txtCelda;
     private Context contexto;
     private Button btnCelda;
@@ -41,10 +41,20 @@ public class MenuBuscar extends AppCompatActivity {
         setContentView(R.layout.layout_busqueda);
         etBuscarPro = (EditText) findViewById(R.id.txtBuscarProducto);
         btnBuscar = (ImageButton) findViewById(R.id.btnBusqueda);
-        //btnAtras = findViewById(R.id.btnAtrasBuscar);
+        btnAtras = findViewById(R.id.btnAtrasBuscar);
         tablaLayout = (TableLayout) findViewById(R.id.tlResulBusqueda);
         this.contexto=getApplicationContext();
 
+
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentAdmi = new Intent(MenuBuscar.this, EscaneoProducto.class);
+                intentAdmi.putExtra("usuario", "usuario");
+                intentAdmi.putExtra("password", "password");
+                startActivity(intentAdmi);
+            }
+        });
 
         accesoDatos.listarProducto();
 

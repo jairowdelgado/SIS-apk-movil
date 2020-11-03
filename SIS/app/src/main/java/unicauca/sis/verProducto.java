@@ -3,6 +3,7 @@ package unicauca.sis;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +14,14 @@ public class verProducto  extends AppCompatActivity {
     private TextView verPrecioProducto;
     private TextView verMarcaProducto;
     private TextView verCantidadProducto;
+    private ImageButton verBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_ver_producto);
+
+        verBack = findViewById(R.id.verBack);
 
         verNombreProducto = findViewById(R.id.verNombreProducto);
         verPrecioProducto = findViewById(R.id.verPrecioProducto);
@@ -25,6 +29,16 @@ public class verProducto  extends AppCompatActivity {
         verCantidadProducto = findViewById(R.id.verCantidadProducto);
 
         mostrarProducto();
+
+        verBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentIngre = new Intent(verProducto.this, ScaneoUsuario.class);
+                intentIngre.putExtra("usuario", "usuario");
+                intentIngre.putExtra("password", "password");
+                startActivity(intentIngre);
+            }
+        });
 
     }
 

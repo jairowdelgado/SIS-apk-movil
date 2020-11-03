@@ -30,7 +30,7 @@ public class EditarProducto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_editar_producto);
         btnActualizar = findViewById(R.id.actualizarPoducto);
-        btnVolver = findViewById(R.id.btnVolerEditar);
+        btnVolver = findViewById(R.id.btnVolverEditar);
         nombreProducto = findViewById(R.id.textNombreEditarProducto);
         marcaProducto = findViewById(R.id.textMarcaEditarProducto);
         precioProducto = findViewById(R.id.textPrecioActualEditarProducto);

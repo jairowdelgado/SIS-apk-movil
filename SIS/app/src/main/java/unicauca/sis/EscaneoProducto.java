@@ -18,6 +18,7 @@ public class EscaneoProducto extends AppCompatActivity {
     //VARIABLE CON EL ROL
     private Button btnBuscarAdmin;
     private ImageButton btnScanner;
+    private ImageButton btnCerrarSesion;
     private String codigo;
     private AccesoDatos AD = new AccesoDatos();
 
@@ -31,6 +32,7 @@ public class EscaneoProducto extends AppCompatActivity {
         btnScanner = findViewById(R.id.botonEscaner);
         btnScanner.setOnClickListener(mOnClickListener);
         btnBuscarAdmin = findViewById(R.id.btnBuscarProducto);
+
         btnBuscarAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +57,6 @@ public class EscaneoProducto extends AppCompatActivity {
 
             }
         }
-
 
     }
 
