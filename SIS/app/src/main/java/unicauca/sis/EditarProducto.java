@@ -46,10 +46,24 @@ public class EditarProducto extends AppCompatActivity {
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double precioEditado = Double.parseDouble(precioNuevo.getEditText().getText().toString().trim());
-                producto.setPrecio(precioEditado);
-                datos.actualizar(producto);
+                if(validacion()){
+                    double precioEditado = Double.parseDouble(precioNuevo.getEditText().getText().toString().trim());
+                    producto.setPrecio(precioEditado);
+                    datos.actualizar(producto);
+                }
             }
         });
+    }
+
+    private boolean validacion(){
+
+        String precioEditado = precioNuevo.getEditText().getText().toString().trim();
+
+        if(precioEditado.isEmpty()){
+            precioNuevo.setError("Debe digitar un nuevo precio");
+            return false;
+        }
+
+        return true;
     }
 }

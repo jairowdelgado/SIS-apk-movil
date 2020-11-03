@@ -5,6 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2196F3"
     android:clickable="true"
     android:onClick="ingresar"
     android:paddingTop="?attr/actionBarSize">
@@ -14,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:background="#2196F3"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logosis"
         tools:layout_editor_absoluteX="16dp" />
@@ -22,6 +24,7 @@
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#2196F3"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:srcCompat="@drawable/namesis"
         tools:layout_editor_absoluteX="10dp" />
@@ -42,16 +45,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/ovalo"
             android:onClick="ingresar"
-            android:text="Ingresar" />
+            android:text="Ingresar"
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_weight="0.3" />
 
         <Button
             android:id="@+id/btnRegistrarse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/button2"
             android:onClick="registrarse"
-            android:text="Registrarse" />
+            android:text="Registrarse"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
     </LinearLayout>
 
 
