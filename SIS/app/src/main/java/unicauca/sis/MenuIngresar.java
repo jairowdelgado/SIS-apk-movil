@@ -28,7 +28,7 @@ public class MenuIngresar extends AppCompatActivity {
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_ingresar);
+        setContentView(R.layout.layout_iniciar_sesion);
         txtLogin = findViewById(R.id.txtUsuario);
         txtPassword  = findViewById(R.id.txtPassword);
         btnLogin = findViewById(R.id.btnLogin);
