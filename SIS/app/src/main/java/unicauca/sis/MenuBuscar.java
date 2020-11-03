@@ -53,40 +53,42 @@ public class MenuBuscar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String busqueda=etBuscarPro.getText().toString().trim();
-                boolean ban=false;
-                if(!busqueda.equals("")){
-                    int count = tablaLayout.getChildCount();
-                    for (int i = 0; i < count; i++) {
-                        View child = tablaLayout.getChildAt(i);
-                        if (child instanceof TableRow)
-                            ((TableRow)child).removeAllViews();
-                    }
-                    listaProducto = new ArrayList<>();
-                    listaP= new ArrayList<>();
-                    listaP=accesoDatos.getProductos();
-
-                    for(int i=0; i<listaP.size();i++){
-                        System.out.println(" "+listaP.get(i).toString());
-                        if(listaP.get(i).getNombre().equals(busqueda)){
-
-
-                            listaProducto.add(listaP.get(i));
-                            ban=true;
-                        }
-                    }
-                    if(ban)
-                        crearDatatable(listaProducto);
-                    else{
-                        Toast toast = Toast.makeText(getApplicationContext(),"Producto no encontrado ",Toast.LENGTH_LONG);
-                        toast.show();
-                    }
-
-                }else{
-                    Toast toast= Toast.makeText(getApplicationContext(),"Debe ingresar algo en la busqueda",Toast.LENGTH_LONG);
-                    toast.show();
-                }
+                realizarBusqueda(busqueda);
             }
         });
+    }
+    private void realizarBusqueda(String busqueda){
+
+        boolean ban=false;
+        if(!busqueda.equals("")){
+            int count = tablaLayout.getChildCount();
+            for (int i = 0; i < count; i++) {
+                View child = tablaLayout.getChildAt(i);
+                if (child instanceof TableRow)
+                    ((TableRow)child).removeAllViews();
+            }
+
+            listaProducto = new ArrayList<>();
+            listaP= new ArrayList<>();
+            listaP=accesoDatos.getProductos();
+
+            for(int i=0; i<listaP.size();i++){
+                if(listaP.get(i).getNombre().equals(busqueda)){
+                    listaProducto.add(listaP.get(i));
+                    ban=true;
+                }
+            }
+            if(ban)
+                crearDatatable(listaProducto);
+            else{
+                Toast toast = Toast.makeText(getApplicationContext(),"Producto no encontrado ",Toast.LENGTH_LONG);
+                toast.show();
+            }
+
+        }else{
+            Toast toast= Toast.makeText(getApplicationContext(),"Debe ingresar algo en la busqueda",Toast.LENGTH_LONG);
+            toast.show();
+        }
     }
 
     private void nuevaFila(){
@@ -199,8 +201,9 @@ public class MenuBuscar extends AppCompatActivity {
                     if (aux.isEstado())
                         bandera = false;
                     aux.setEstado(bandera);
-
+                    String auxBusqueda=producto.getNombre();
                     accesoDatos.actualizar(aux);
+                    //realizarBusqueda(auxBusqueda);
 
                 }
             });

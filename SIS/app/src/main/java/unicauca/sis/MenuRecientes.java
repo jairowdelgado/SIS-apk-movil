@@ -44,6 +44,8 @@ public class MenuRecientes extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuRecientes.this,ScaneoUsuario.class);
+                Bundle  usua=getIntent().getExtras();
+                intent.putExtra("usuario",usua.getString("usuario"));
                 startActivity(intent);
             }
         });
