@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +19,7 @@ public class EscaneoProducto extends AppCompatActivity {
     //VARIABLE CON EL ROL
     private Button btnBuscarAdmin;
     private ImageButton btnScanner;
-    private ImageButton btnCerrarSesion;
+    private Button btnCerrarSesion;
     private String codigo;
     private AccesoDatos AD = new AccesoDatos();
 
@@ -32,12 +33,23 @@ public class EscaneoProducto extends AppCompatActivity {
         btnScanner = findViewById(R.id.botonEscaner);
         btnScanner.setOnClickListener(mOnClickListener);
         btnBuscarAdmin = findViewById(R.id.btnBuscarProducto);
+        btnCerrarSesion = findViewById(R.id.btnCerrarSesionAdmin);
 
         btnBuscarAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EscaneoProducto.this, MenuBuscar.class);
                 startActivity(intent);
+            }
+        });
+
+        btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(EscaneoProducto.this,MainActivity.class);
+                startActivity(i);
+                Toast toast = Toast.makeText(getApplicationContext(),"Sesión cerrada",Toast.LENGTH_LONG);
+                toast.show();
             }
         });
     }

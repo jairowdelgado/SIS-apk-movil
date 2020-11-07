@@ -58,4 +58,12 @@
         app:layout_constraintTop_toBottomOf="@+id/botonEscaner"
         app:layout_constraintVertical_bias="1.0" />
 
+    <Button
+        android:id="@+id/btnCerrarSesionUsuario"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/terminar_sesion"
+        tools:layout_editor_absoluteX="375dp"
+        tools:layout_editor_absoluteY="1dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
