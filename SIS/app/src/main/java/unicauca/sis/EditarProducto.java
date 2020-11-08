@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -54,6 +55,9 @@ public class EditarProducto extends AppCompatActivity {
                     double precioEditado = Double.parseDouble(precioNuevo.getEditText().getText().toString().trim());
                     producto.setPrecio(precioEditado);
                     datos.actualizar(producto);
+                    Intent intent = new Intent(EditarProducto.this,MenuBuscar.class);
+                    Toast.makeText(getApplicationContext(),"Actualizacion realizada con exito!",Toast.LENGTH_LONG).show();
+                    startActivity(intent);
                 }
             }
         });

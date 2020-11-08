@@ -32,7 +32,7 @@ public class MenuBuscar extends AppCompatActivity {
     private TableLayout tablaLayout;
     private ArrayList<String> datos;
     private TableRow filaTabla;
-    private ArrayList<Producto> listaProducto;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +44,8 @@ public class MenuBuscar extends AppCompatActivity {
         btnAtras = findViewById(R.id.btnAtrasBuscar);
         tablaLayout = (TableLayout) findViewById(R.id.tlResulBusqueda);
         this.contexto=getApplicationContext();
+        accesoDatos.listarProducto();
+
 
 
         btnAtras.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +58,7 @@ public class MenuBuscar extends AppCompatActivity {
             }
         });
 
-        accesoDatos.listarProducto();
+
 
 
         btnBuscar.setOnClickListener(new View.OnClickListener(){
@@ -69,6 +71,7 @@ public class MenuBuscar extends AppCompatActivity {
     }
     private void realizarBusqueda(String busqueda){
 
+        ArrayList<Producto> listaProducto;
         boolean ban=false;
         if(!busqueda.equals("")){
             int count = tablaLayout.getChildCount();
@@ -79,17 +82,18 @@ public class MenuBuscar extends AppCompatActivity {
             }
 
             listaProducto = new ArrayList<>();
+
             listaP= new ArrayList<>();
             listaP=accesoDatos.getProductos();
-
             for(int i=0; i<listaP.size();i++){
                 if(listaP.get(i).getNombre().equals(busqueda)){
                     listaProducto.add(listaP.get(i));
                     ban=true;
                 }
             }
-            if(ban)
+            if(ban) {
                 crearDatatable(listaProducto);
+            }
             else{
                 Toast toast = Toast.makeText(getApplicationContext(),"Producto no encontrado ",Toast.LENGTH_LONG);
                 toast.show();
@@ -125,7 +129,8 @@ public class MenuBuscar extends AppCompatActivity {
 
 
 
-    private void crearDatatable(ArrayList<Producto> listaProducto){
+    private void crearDatatable(final ArrayList<Producto> listaProducto){
+
        // final Producto pro = producto;
         this.datos = new ArrayList<>();
         this.datos.add("Nombre : ");
@@ -134,6 +139,7 @@ public class MenuBuscar extends AppCompatActivity {
         this.datos.add("Precio : ");
         this.datos.add("Estado : ");
         for (final Producto producto: listaProducto) {
+
             nuevaFila();
             nuevaCelda();
             txtCelda.setText(datos.get(0));
@@ -213,7 +219,9 @@ public class MenuBuscar extends AppCompatActivity {
                     aux.setEstado(bandera);
                     String auxBusqueda=producto.getNombre();
                     accesoDatos.actualizar(aux);
-                    //realizarBusqueda(auxBusqueda);
+                    Toast.makeText(contexto,"Estado actualizado con exito ",Toast.LENGTH_LONG).show();
+                    Intent intent= new Intent(MenuBuscar.this,MenuBuscar.class);
+                    startActivity(intent);
 
                 }
             });

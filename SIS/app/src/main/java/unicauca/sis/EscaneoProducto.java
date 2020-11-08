@@ -39,6 +39,7 @@ public class EscaneoProducto extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EscaneoProducto.this, MenuBuscar.class);
+                intent.putExtra("actualizar","false");
                 startActivity(intent);
             }
         });

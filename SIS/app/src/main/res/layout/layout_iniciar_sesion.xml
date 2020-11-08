@@ -1,97 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="700dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/txtInicioSesion"
-                android:layout_width="164dp"
-                android:layout_height="36dp"
-                android:layout_marginTop="100dp"
-                android:text="Iniciar Sesión"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <ImageButton
+        android:id="@+id/btnVolverIngresar"
+        android:layout_width="40dp"
+        android:layout_height="44dp"
+        android:background="@drawable/backward"
+        android:scrollbarSize="6dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/txtUsuario"
-                android:layout_width="333dp"
-                android:layout_height="49dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="108dp"
-                android:hint="Ingrese su Usuario"
-                android:inputType="textEmailAddress"
-                android:textColor="#2196F3"
-                android:textColorHint="#2196F3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtInicioSesion" />
+    <EditText
+        android:id="@+id/txtUsuario"
+        android:layout_width="333dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="48dp"
+        android:hint="Ingrese su Usuario"
+        android:inputType="textEmailAddress"
+        android:textColor="#2196F3"
+        android:textColorHint="#2196F3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInicioSesion" />
 
-            <EditText
-                android:id="@+id/txtPassword"
-                android:layout_width="333dp"
-                android:layout_height="49dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:hint="Ingrese su contraseña"
-                android:inputType="textPassword"
-                android:textColor="#2196F3"
-                android:textColorHint="#2196F3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.564"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
+    <TextView
+        android:id="@+id/txtInicioSesion"
+        android:layout_width="164dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="88dp"
+        android:text="Iniciar Sesión"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-            <Button
-                android:id="@+id/btnLogin"
-                android:layout_width="413dp"
-                android:layout_height="78dp"
-                android:layout_marginTop="524dp"
-                android:background="#2196F3"
-                android:text="Iniciar Sesion "
-                android:textColor="@color/common_google_signin_btn_text_dark_default"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="413dp"
+        android:layout_height="78dp"
+        android:background="#2196F3"
+        android:text="Iniciar Sesion "
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <ImageButton
-                android:id="@+id/btnVolverIngresar"
-                android:layout_width="40dp"
-                android:layout_height="44dp"
-                android:background="@drawable/backward"
-                android:scrollbarSize="6dp"
-                tools:layout_editor_absoluteX="4dp"
-                tools:layout_editor_absoluteY="1dp" />
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="333dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="64dp"
+        android:hint="Ingrese su contraseña"
+        android:inputType="textPassword"
+        android:textColor="#2196F3"
+        android:textColorHint="#2196F3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ingresar"
-                android:textColor="#2196F3"
-                android:textSize="30sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtInicioSesion"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.412"
-                app:layout_constraintStart_toEndOf="@+id/btnVolverIngresar"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.083" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
-</LinearLayout>
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Ingresar"
+        android:textColor="#2196F3"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

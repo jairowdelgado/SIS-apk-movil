@@ -49,11 +49,16 @@
 
     </LinearLayout>
 
-    <TableLayout
-        android:id="@+id/tlResulBusqueda"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#2196F3" />
+        android:layout_height="wrap_content">
+
+        <TableLayout
+            android:id="@+id/tlResulBusqueda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2196F3" />
+    </ScrollView>
 
 
 </LinearLayout>
