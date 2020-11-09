@@ -62,12 +62,18 @@ public class EscaneoProducto extends AppCompatActivity {
 
         if(result != null){
             if(result.getContents() != null){
-                //codigo = result.getContents();
-                Intent menuIn= new Intent(this, crearProducto.class);
-                menuIn.putExtra("codigo", String.valueOf(result.getContents()));
-                startActivity(menuIn);
+                if(AD.getProducto(result.getContents()) == null){
+                    Intent menuIn= new Intent(this, crearProducto.class);
+                    menuIn.putExtra("codigo", String.valueOf(result.getContents()));
+                    startActivity(menuIn);
+                }
+                else{
+                    Toast toast = Toast.makeText(getApplicationContext(),"El codigo del producto ya existe",Toast.LENGTH_LONG);
+                    toast.show();
+                }
             }else{
-
+                Toast toast = Toast.makeText(getApplicationContext(),"El codigo no pudo ser leido",Toast.LENGTH_LONG);
+                toast.show();
             }
         }
 

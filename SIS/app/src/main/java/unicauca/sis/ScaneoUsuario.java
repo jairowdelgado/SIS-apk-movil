@@ -97,15 +97,9 @@ public class ScaneoUsuario  extends  AppCompatActivity{
                 Intent i= new Intent(this,verProducto.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("producto", producto);
+                bundle.putSerializable("usuario", usuario);
                 i.putExtras(bundle);
                 startActivity(i);
-
-
-                /*
-                codigo = result.getContents();
-                Intent menuIn= new Intent(this,EscaneoProducto.class);
-                startActivity(menuIn);
-                */
             }else{
                 codigo = "error";
                 System.out.println(" *************************** El resultado del escaner es: " + codigo);
@@ -123,24 +117,24 @@ public class ScaneoUsuario  extends  AppCompatActivity{
                 }
             }
         };
-    public void registrarRecientes(Producto producto,User usuario){
-        Sqlconexion sqlconexion= new Sqlconexion(this,"bd_reciente",null,1);
-        SQLiteDatabase db = sqlconexion.getWritableDatabase();
+        public void registrarRecientes(Producto producto,User usuario){
+            Sqlconexion sqlconexion= new Sqlconexion(this,"bd_reciente",null,1);
+            SQLiteDatabase db = sqlconexion.getWritableDatabase();
 
 
-        ContentValues values= new ContentValues();
-        values.put(DAO.CAMPO_CODIGO,producto.getCodigo());
-        values.put(DAO.CAMPO_NOMBRE,producto.getNombre());
-        values.put(DAO.CAMPO_MARCA,producto.getMarca());
-        values.put(DAO.CAMPO_CANTIDAD,producto.getCantidad());
-        values.put(DAO.CAMPO_PRECIO,producto.getPrecio());
-        values.put(DAO.CAMPO_MEDIDA,producto.getMedida());
-        values.put(DAO.CAMPO_ESTADO,producto.isEstado());
+            ContentValues values= new ContentValues();
+            values.put(DAO.CAMPO_CODIGO,producto.getCodigo());
+            values.put(DAO.CAMPO_NOMBRE,producto.getNombre());
+            values.put(DAO.CAMPO_MARCA,producto.getMarca());
+            values.put(DAO.CAMPO_CANTIDAD,producto.getCantidad());
+            values.put(DAO.CAMPO_PRECIO,producto.getPrecio());
+            values.put(DAO.CAMPO_MEDIDA,producto.getMedida());
+            values.put(DAO.CAMPO_ESTADO,producto.isEstado());
 
-        values.put(DAO.CAMPO_USUARIO,usuario.getUsuario());
-        System.out.println(DAO.CAMPO_MARCA+" mara  "+producto.getMarca());
-        Long idre =db.insert(DAO.TABLA_PRODUCTO,DAO.CAMPO_CODIGO,values);
-        db.close();
-    }
-    }
+            values.put(DAO.CAMPO_USUARIO,usuario.getUsuario());
+            System.out.println(DAO.CAMPO_MARCA+" mara  "+producto.getMarca());
+            Long idre =db.insert(DAO.TABLA_PRODUCTO,DAO.CAMPO_CODIGO,values);
+            db.close();
+        }
+}
 

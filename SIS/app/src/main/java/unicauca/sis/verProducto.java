@@ -33,9 +33,11 @@ public class verProducto  extends AppCompatActivity {
         verBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle extras = getIntent().getExtras();
+                User usuario = (User) extras.getSerializable("usuario");
                 Intent intentIngre = new Intent(verProducto.this, ScaneoUsuario.class);
-                intentIngre.putExtra("usuario", "usuario");
-                intentIngre.putExtra("password", "password");
+                intentIngre.putExtra("usuario", usuario.getUsuario());
+                intentIngre.putExtra("password", usuario.getContrasenia());
                 startActivity(intentIngre);
             }
         });

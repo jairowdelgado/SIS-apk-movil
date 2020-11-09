@@ -42,20 +42,21 @@
 
     <Button
         android:id="@+id/btnBuscarProducto"
-        android:layout_width="410dp"
-        android:layout_height="66dp"
-        android:background="#3F51B5"
+        android:layout_width="383dp"
+        android:layout_height="58dp"
+        android:background="@drawable/listar"
         android:gravity="bottom|end"
         android:text="Buscar Producto"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="36sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botonEscaner"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.78" />
 
     <TextView
         android:id="@+id/txtMensaje"
