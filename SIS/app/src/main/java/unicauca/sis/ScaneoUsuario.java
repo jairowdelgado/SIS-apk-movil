@@ -96,10 +96,12 @@ public class ScaneoUsuario  extends  AppCompatActivity{
                 producto=AD.getProducto(result.getContents());
                 registrarRecientes(producto,usuario);
 
-                Intent i= new Intent(this,verProducto.class);
+                Intent i= new Intent(ScaneoUsuario.this,verProducto.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("producto", producto);
                 i.putExtras(bundle);
+                i.putExtra("usuario",usuario.getUsuario());
+                //i.putExtra("contrasenia",usuario.getContrasenia());
                 startActivity(i);
 
 
@@ -169,7 +171,7 @@ public class ScaneoUsuario  extends  AppCompatActivity{
 
             }catch (Exception ex){
                 Toast toast = Toast.makeText(getApplicationContext(),"",Toast.LENGTH_LONG);
-                toast.show();
+                
             }
             db.close();
             return bandera;

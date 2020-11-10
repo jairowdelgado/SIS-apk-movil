@@ -34,10 +34,11 @@ public class verProducto  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Bundle extras = getIntent().getExtras();
-                User usuario = (User) extras.getSerializable("usuario");
+                String usuario =  extras.getString("usuario");
+                //String contrasenia=extras.getString("contrasenia");
                 Intent intentIngre = new Intent(verProducto.this, ScaneoUsuario.class);
-                intentIngre.putExtra("usuario", usuario.getUsuario());
-                intentIngre.putExtra("password", usuario.getContrasenia());
+                intentIngre.putExtra("usuario",usuario);
+                //intentIngre.putExtra("contrasenia", contrasenia);
                 startActivity(intentIngre);
             }
         });
