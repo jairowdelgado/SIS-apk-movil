@@ -3,6 +3,7 @@ package unicauca.sis;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -43,6 +44,7 @@ public class ScaneoUsuario  extends  AppCompatActivity{
 
         //VARIABLE CON EL ROL
         private Button btnReciente;
+        private Sqlconexion sqlconexion;
         private ImageButton btnScanner;
         private Button btnCerrarSesion;
         private String codigo;
@@ -97,9 +99,15 @@ public class ScaneoUsuario  extends  AppCompatActivity{
                 Intent i= new Intent(this,verProducto.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("producto", producto);
-                bundle.putSerializable("usuario", usuario);
                 i.putExtras(bundle);
                 startActivity(i);
+
+
+                /*
+                codigo = result.getContents();
+                Intent menuIn= new Intent(this,EscaneoProducto.class);
+                startActivity(menuIn);
+                */
             }else{
                 codigo = "error";
                 System.out.println(" *************************** El resultado del escaner es: " + codigo);
@@ -118,23 +126,53 @@ public class ScaneoUsuario  extends  AppCompatActivity{
             }
         };
         public void registrarRecientes(Producto producto,User usuario){
-            Sqlconexion sqlconexion= new Sqlconexion(this,"bd_reciente",null,1);
-            SQLiteDatabase db = sqlconexion.getWritableDatabase();
+            if(!leerRecientes(producto.getCodigo())) {
+                Sqlconexion sqlconexion = new Sqlconexion(this, "bd_reciente", null, 1);
+                SQLiteDatabase db = sqlconexion.getWritableDatabase();
 
 
-            ContentValues values= new ContentValues();
-            values.put(DAO.CAMPO_CODIGO,producto.getCodigo());
-            values.put(DAO.CAMPO_NOMBRE,producto.getNombre());
-            values.put(DAO.CAMPO_MARCA,producto.getMarca());
-            values.put(DAO.CAMPO_CANTIDAD,producto.getCantidad());
-            values.put(DAO.CAMPO_PRECIO,producto.getPrecio());
-            values.put(DAO.CAMPO_MEDIDA,producto.getMedida());
-            values.put(DAO.CAMPO_ESTADO,producto.isEstado());
+                ContentValues values = new ContentValues();
+                values.put(DAO.CAMPO_CODIGO, producto.getCodigo());
+                values.put(DAO.CAMPO_NOMBRE, producto.getNombre());
+                values.put(DAO.CAMPO_MARCA, producto.getMarca());
+                values.put(DAO.CAMPO_CANTIDAD, producto.getCantidad());
+                values.put(DAO.CAMPO_PRECIO, producto.getPrecio());
+                values.put(DAO.CAMPO_MEDIDA, producto.getMedida());
+                values.put(DAO.CAMPO_ESTADO, producto.isEstado());
 
-            values.put(DAO.CAMPO_USUARIO,usuario.getUsuario());
-            System.out.println(DAO.CAMPO_MARCA+" mara  "+producto.getMarca());
-            Long idre =db.insert(DAO.TABLA_PRODUCTO,DAO.CAMPO_CODIGO,values);
-            db.close();
+                values.put(DAO.CAMPO_USUARIO, usuario.getUsuario());
+                System.out.println(DAO.CAMPO_MARCA + " mara  " + producto.getMarca());
+                Long idre = db.insert(DAO.TABLA_PRODUCTO, DAO.CAMPO_CODIGO, values);
+                db.close();
+            }
         }
-}
+
+        private boolean leerRecientes(String codigo){
+            boolean bandera = false;
+            Bundle  usua=getIntent().getExtras();
+            User usuario=new User();
+            usuario.setUsuario(usua.getString("usuario"));
+            ArrayList<Producto> liPro=new ArrayList<>();
+            Producto pros=new Producto();
+            sqlconexion = new Sqlconexion(this,"bd_reciente",null,1);
+            SQLiteDatabase db = sqlconexion.getReadableDatabase();
+            String[] parametros = {usuario.getUsuario()};
+            String[] campos = {DAO.CAMPO_CODIGO,DAO.CAMPO_USUARIO};
+            try {
+                Cursor cursor = db.query(DAO.TABLA_PRODUCTO,campos,DAO.CAMPO_USUARIO+"=? ",parametros,null,null," ID_TABLA DESC ",null);
+                cursor.moveToFirst();
+                do {
+                    if(cursor.getString(0).equals(codigo)){
+                        bandera=true;
+                    }
+                }while(cursor.moveToNext());
+
+            }catch (Exception ex){
+                Toast toast = Toast.makeText(getApplicationContext(),"",Toast.LENGTH_LONG);
+                toast.show();
+            }
+            db.close();
+            return bandera;
+        }
+    }
 
