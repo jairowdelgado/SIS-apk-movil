@@ -68,7 +68,7 @@ public class MenuRecientes extends AppCompatActivity {
             Cursor cursor = db.query(DAO.TABLA_PRODUCTO,campos,DAO.CAMPO_USUARIO+"=? ",parametros,null,null," ID_TABLA DESC ",null);
             cursor.moveToFirst();
             do {
-                System.out.println(cursor.getCount() + " imptime ro " + cursor.getString(2));
+
                 Producto pro = new Producto();
                 pro.setNombre(cursor.getString(0));
                 pro.setMarca(cursor.getString(1));
@@ -82,7 +82,7 @@ public class MenuRecientes extends AppCompatActivity {
 
 
         }catch (Exception ex){
-            Toast toast = Toast.makeText(getApplicationContext()," knfl",Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(getApplicationContext()," No hay productos recientes",Toast.LENGTH_LONG);
             toast.show();
         }
     }
